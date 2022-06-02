@@ -43,7 +43,7 @@ def streamlit_menu(example=1):
         # 2. horizontal menu with custom style
         selected = option_menu(
             menu_title=None,  # required
-            options=["Home", "Our service", "Contact"],  # required
+            options=["Home", "Our service", "About us"],  # required
             icons=["house", "search", "emoji-sunglasses"],  # optional
             menu_icon="cast",  # optional
             default_index=0,  # optional
@@ -114,19 +114,22 @@ if selected == "About us":
     st.markdown('''
     ## Cris
 
-    LinkedIn:
+    LinkedIn : https://www.linkedin.com/in/crist%C3%B3bal-cepeda-lagos/
+    GitHub : https://github.com/Cris-CL/deep_seo
     ''')
 
     st.markdown('''
     ## Elizabeth
 
-    LinkedIn:
+    LinkedIn: www.linkedin.com/in/elizabeth-kok-9407331b6
+    GitHub : https://github.com/Elizabeth-kok
     ''')
 
     st.markdown('''
     ## Nayoung
 
     LinkedIn:
+    GitHub : https://github.com/na0young124
     ''')
 
 if selected == "Home":
@@ -187,22 +190,25 @@ if selected == "Home":
         'feature': feature,
         'imageone': image_input1,
         'imagetwo': image_input2,
-        'imagethree': image_input3,}
+        'imagethree': image_input3}
 
-    url = 'https://deepseosecond-5ost5gg5jq-ew.a.run.app/seo_eval'
-    urll="?title=" + data.get("title") + "&description=" + data.get("description") + "&feature=" + data.get("feature") + "&imageone=" + data.get("imageone") + "&imagetwo="+ data.get("imagetwo")+"&imagethree="+ data.get("imagethree")
+    url = 'https://deepseofourth-5ost5gg5jq-ew.a.run.app/seo_eval'
+    urll="?title=" + data.get("title") + " &description=" + data.get("description") + "&feature=" + data.get("feature") + "&imageone=" + data.get("imageone") + "&imagetwo="+ data.get("imagetwo")+"&imagethree="+ data.get("imagethree")
     new_url=url + urll
 # /seo_eval?title=fake title for a fake product &description=this description is awesome&feature=I have no features&imageone=https://cdn-image02.casetify.com/usr/4787/34787/~v3/22690451x2_iphone13_16003249.png.1000x1000-w.m80.jpg&imagetwo=https://m.media-amazon.com/images/I/81MLO3k15iL._AC_SL1500_.jpg&imagethree=https://m.media-amazon.com/images/I/71HiwDwAcoL._AC_SL1500_.jpg
 
-    import requests
-    x= requests.get(new_url)
-    print (x.json()["Classification"])
+    # import requests
+    # x= requests.get(new_url)
+    # print (x.json()["Classification"])
 
     '''
     ## The predicted ranking for your Amazon product is ...
     '''
     if st.button('Submit'):
         # print is visible in the server output, not in the page
+        import requests
+        x= requests.get(new_url)
+        print (x.json()["Classification"])
         st.write('Best Selling product ever! :D')
         st.write(x.json()["Classification"])
         st.write(x.json()["Rank Image 1"])
@@ -212,6 +218,48 @@ if selected == "Home":
 # url = 'https://deepseofirst-5ost5gg5jq-ew.a.run.app/seo_eval'
 # urll="?title=" + data.get("title") + "&description=" + data.get("description") + "&feature=" + data.get("feature") + "&imageone=" + data.get("imageone") + "&imagetwo="+ data.get("imagetwo")+"&imagethree="+ data.get("imagethree")
 
+# """
+# data={'title': "fake title for a fake product",
+#     'description': "this description is awesome",
+#     'feature': "I have no features",
+#     'imageone': "https://cdn-image02.casetify.com/usr/4787/34787/~v3/22690451x2_iphone13_16003249.png.1000x1000-w.m80.jpg",
+#     'imagetwo': "https://m.media-amazon.com/images/I/81MLO3k15iL._AC_SL1500_.jpg",
+#     'imagethree': "https://m.media-amazon.com/images/I/71HiwDwAcoL._AC_SL1500_.jpg"}
+
+# url = 'https://deepseosecond-5ost5gg5jq-ew.a.run.app/seo_eval'
+# secondurl="https://deepseosecond-5ost5gg5jq-ew.a.run.app/seo_eval"
+# urll="?title=fake title for a fake product &description=this description is awesome&feature=I have no features&imageone=https://cdn-image02.casetify.com/usr/4787/34787/~v3/22690451x2_iphone13_16003249.png.1000x1000-w.m80.jpg&imagetwo=https://m.media-amazon.com/images/I/81MLO3k15iL._AC_SL1500_.jpg&imagethree=https://m.media-amazon.com/images/I/71HiwDwAcoL._AC_SL1500_.jpg"
+
+# urlll="?title=" + data.get("title") + " &description=" + data.get("description") + "&feature=" + data.get("feature") + "&imageone=" + data.get("imageone") + "&imagetwo="+ data.get("imagetwo")+"&imagethree="+ data.get("imagethree")
+
+
+# fullurl= url+urll
+# print(fullurl)
+
+# dict_fullurl= secondurl+urlll
+# print(dict_fullurl)
+
 # import requests
-# x= requests.get(new_url)
+# x= requests.get(dict_fullurl)
+
+# print("---------------------------------")
+# print (x)
+
+# print("---------------------------------")
 # print (x.json())
+
+# print("---------------------------------")
+# print (x.json()["Classification"])
+
+
+# # st.write('Best Selling product ever! :D')
+# # st.write(x.json()["Classification"])
+# # st.write(x.json()["Rank Image 1"])
+# # st.write(x.json()["Rank Image 2"])
+# # st.write(x.json()["Rank Image 3"])
+
+# # <Response [200]>
+# # ---------------------------------
+# # {'Classification': '10', 'Rank Image 1': 'rankten', 'Rank Image 2': 'rankfive', 'Rank Image 3': 'rankseven'}
+
+# """
